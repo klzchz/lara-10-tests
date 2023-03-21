@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\Site\SiteController;
 use  Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\Admin\{SupportController};
 
-$route = new Route;
 
-
-$route ::get('/',fn() =>  view('welcome'));
-
-$route ::get('/contact',[SiteController::class,'contact']);
+Route::get('/supports',[SupportController::class,'index'])->name('supports.index');
+Route::get('/',fn() =>  view('welcome'));
+Route::get('/contact',[SiteController::class,'contact']);
