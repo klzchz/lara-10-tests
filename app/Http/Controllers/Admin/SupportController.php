@@ -3,12 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Support;
 use Illuminate\Http\Request;
 
 class SupportController extends Controller
 {
-    public function index()
+    protected object $support;
+
+    public function __construct(Support $support)
     {
-        return view('admin.supports.index');
+        $this->support = $support;
+    }
+
+    public function index() :?object
+    {
+        $supports = $this->support->all();
+
+        return view('admin.supports.index',compact('supports'));
     }
 }
